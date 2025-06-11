@@ -46,6 +46,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -54,7 +64,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlUrls>
+								<wsdlUrl>http://localhost:5175/Service.svc?wsdl</wsdlUrl>
+							</wsdlUrls>
+							<packageName>com.soap.wsdl</packageName>
+							<sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+							<!--<destDir>${classesDir}</destDir>--> // Lugar donde se almacenaran los archivos compilados .class
+							<extension>true</extension>
+						</configuration>
+					</execution>
+				</executions>
+				
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
