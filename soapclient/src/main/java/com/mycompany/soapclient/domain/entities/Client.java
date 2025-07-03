@@ -8,6 +8,5 @@ public class Client {
     private String customerName;
     private Balance totalBalance;
     private String accountStatus;
-
-
+    
 }

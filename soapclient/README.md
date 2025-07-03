@@ -15,3 +15,6 @@ mvn clean compile
 
 ### Tips
 - Parece que es importante, al menos para vs code, abrir este proyecto en SOAPCLIENT/, no en la carpeta raiz del repositorio
+
+## Estado del proyecto
+En este punto del desarrollo del proyecto, al intentar consumir el servivio me esta devolviendo un error, debido a que el servicio soap que se esta intentando consumir desde este proyecto de spring boot no es realmente un servicio SOAP, aunque retorna un XML, esto no significa que sea un servicio SOAP
