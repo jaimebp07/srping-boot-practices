@@ -3,15 +3,12 @@ package com.mycompany.roles_and_auth.infrastructure.adapter.in;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.roles_and_auth.aplication.service.UserService;
-import com.mycompany.roles_and_auth.domain.models.Role;
 import com.mycompany.roles_and_auth.domain.models.User;
 import com.mycompany.roles_and_auth.domain.port.in.UserServicePort;
 import com.mycompany.roles_and_auth.infrastructure.adapter.in.dto.UserDTO;
+import com.mycompany.roles_and_auth.infrastructure.adapter.in.mapper.UserMapper;
 
 import jakarta.validation.Valid;
-
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,8 +38,7 @@ public class MainController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO){
-        Set<Role> roles = userDTO.getRoles().stream().map(Role::valueOf).collect(Collectors.toSet());
-        User user = User.builder().name(userDTO.getUsername()).email(userDTO.getEmail()).password(userDTO.getPassword()).roles(roles).build();
+        User user = UserMapper.toDomain(userDTO);
         boolean isCreate = this.userServicePort.createUser(user);
         return  isCreate ? ResponseEntity.ok().body("User created") : ResponseEntity.badRequest().body("Cannot create user");
     }
