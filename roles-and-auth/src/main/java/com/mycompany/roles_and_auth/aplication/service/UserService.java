@@ -1,9 +1,12 @@
 package com.mycompany.roles_and_auth.aplication.service;
 
-import com.mycompany.roles_and_auth.domain.models.User;
+import org.springframework.stereotype.Service;
+
+import com.mycompany.roles_and_auth.domain.model.User;
 import com.mycompany.roles_and_auth.domain.port.in.UserServicePort;
 import com.mycompany.roles_and_auth.domain.port.out.UserRepositoryPort;
 
+@Service
 public class UserService implements UserServicePort {
 
     private UserRepositoryPort userRepositoryPort;

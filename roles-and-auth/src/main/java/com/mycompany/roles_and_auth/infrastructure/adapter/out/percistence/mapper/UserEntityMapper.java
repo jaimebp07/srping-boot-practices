@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.mycompany.roles_and_auth.domain.models.User;
+import com.mycompany.roles_and_auth.domain.model.User;
 import com.mycompany.roles_and_auth.infrastructure.adapter.out.percistence.entity.RoleEntity;
 import com.mycompany.roles_and_auth.infrastructure.adapter.out.percistence.entity.UserEntity;
 
@@ -20,7 +20,7 @@ public UserEntity toEntity(User userDomain) {
                         .collect(Collectors.toSet());
 
         UserEntity userEntity = UserEntity.builder()
-         .username(userDomain.getName())
+         .username(userDomain.getUsername())
          .email(userDomain.getEmail())
          .password(userDomain.getPassword())
          .roles(roles)

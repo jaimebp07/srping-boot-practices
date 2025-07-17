@@ -1,6 +1,6 @@
 package com.mycompany.roles_and_auth.infrastructure.adapter.out.percistence.entity;
 
-import com.mycompany.roles_and_auth.domain.models.Role;
+import com.mycompany.roles_and_auth.domain.model.Role;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

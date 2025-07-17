@@ -1,6 +1,6 @@
 package com.mycompany.roles_and_auth.domain.port.in;
 
-import com.mycompany.roles_and_auth.domain.models.User;
+import com.mycompany.roles_and_auth.domain.model.User;
 
 public interface UserServicePort {
 
