@@ -12,7 +12,7 @@ import com.mycompany.roles_and_auth.infrastructure.adapter.out.percistence.entit
 @Component
 public class UserEntityMapper {
 
-public UserEntity toEntity(User userDomain) {
+    public UserEntity toEntity(User userDomain) {
         Set<RoleEntity> roles = userDomain.getRoles().stream()
             .map(rol -> RoleEntity.builder()
                         .role(rol)
