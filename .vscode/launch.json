@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StreamSubObsApplication",
+            "request": "launch",
+            "mainClass": "com.observercompany.stream_sub_obs.StreamSubObsApplication",
+            "projectName": "stream-sub-obs"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-RolesAndAuthApplication<roles-and-auth>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
