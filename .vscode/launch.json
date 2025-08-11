@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProjectReactorFeaturesApplication",
+            "request": "launch",
+            "mainClass": "com.mycompany.project_reactor_features.ProjectReactorFeaturesApplication"
+        },
+        {
+            "type": "java",
             "name": "StreamSubObsApplication",
             "request": "launch",
             "mainClass": "com.observercompany.stream_sub_obs.StreamSubObsApplication",
