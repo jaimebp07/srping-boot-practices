@@ -29,18 +29,36 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	implementation 'io.projectreactor:reactor-core:3.7.3'
+	// 👇 BOM de Reactor: define versiones compatibles de todos los artefactos
+	implementation platform("io.projectreactor:reactor-bom:2024.0.1")
+
+	implementation 'io.projectreactor:reactor-core'
+	testImplementation 'io.projectreactor:reactor-test'
 
 	implementation 'org.fusesource.jansi:jansi:2.4.0' //Para agregar color a los logs
 	implementation 'org.apache.logging.log4j:log4j-api:3.0.0-alpha1'
 	implementation 'org.apache.logging.log4j:log4j-core:3.0.0-alpha1'
 	implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:3.0.0-alpha1'
 	// implementation 'org.apache.logging.log4j:log4j-to-slf4j:3.0.0-alpha1' //En caso de trabajar con maven es necesario utilizar una  dependencia con este arqueotipo
-	
+	 
+	// 👉 Mockito + Inline mock maker
+    testImplementation 'org.mockito:mockito-core:5.19.0'
+    //testImplementation 'org.mockito:mockito-inline:5.2.0'   // habilita el inline mock maker
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+
+    // 👉 añadir byte-buddy-agent como -javaagent
+    /*doFirst {
+        def agentJar = configurations.testRuntimeClasspath.find {
+            it.name.contains("byte-buddy-agent")
+        }
+        if (agentJar) {
+            jvmArgs("-javaagent:${agentJar.absolutePath}")
+        }
+    }*/
 }
